@@ -1,3 +1,11 @@
+/*
+#
+#   THIS SCRIPT FOR ANIME 
+#   ^_^"
+#   * we needed to upgrade always.
+#   * I Hate Js.
+# POWERD BY BLACKCAT 2021 - 2022
+*/
 var class_danger = 'alert-danger';
 var class_success = 'alert-success';
 var class_btn_block = 'disabled';

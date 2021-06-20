@@ -1,4 +1,11 @@
 <?php
+#
+#   THIS SCRIPT FOR ANIME 
+#   ^_^"
+#   * we needed to upgrade always.
+#
+# POWERD BY BLACKCAT 2021 - 2022
+
 include_once("InterFaces.php");
 /// we building a carousel for set a rows on them 
 /// the is boostrap a link exapmle : https://bootstrap.rtlcss.com/docs/4.2/components/carousel/.

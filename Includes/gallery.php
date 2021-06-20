@@ -1,6 +1,10 @@
 <?php
-
-
+#
+#   THIS SCRIPT FOR ANIME 
+#   ^_^"
+#   * we needed to upgrade always.
+#
+# POWERD BY BLACKCAT 2021 - 2022
 echo '<div id="list-gallery" class="carousel slide" data-ride="carousel" style="margin: auto;width: 30%;">
   <ol class="carousel-indicators" style="display: none;">
     <li data-target="#list-gallery" data-slide-to="0" class="active"></li>

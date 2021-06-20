@@ -1,4 +1,12 @@
 <?php
+
+#
+#   THIS SCRIPT FOR ANIME 
+#   ^_^"
+#   * we needed to upgrade always.
+#
+# POWERD BY BLACKCAT 2021 - 2022
+
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 function siteURL()

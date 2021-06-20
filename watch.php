@@ -1,12 +1,11 @@
 <?php
 #
 #   THIS SCRIPT FOR ANIME 
-#
-#   * this file for watch view building.
-#   * this didn't has plugin for him
+#   ^_^"
 #   * we needed to upgrade always.
 #
-# POWERD BY BLACKCAT 2020 - 2021
+# POWERD BY BLACKCAT 2021 - 2022
+
 include_once("IncludeAll.php");
 include_once("Includes/start.php");
 /* هنا نصنع مجموعة من الاسماء الكلاسات من اجل ان نستخدمة في تغير شكل الازرار */

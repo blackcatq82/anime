@@ -1,4 +1,12 @@
 <?php
+
+#
+#   THIS SCRIPT FOR ANIME 
+#   ^_^"
+#   * we needed to upgrade always.
+#
+# POWERD BY BLACKCAT 2021 - 2022
+
 /** BUILDER A TOOLS ON ONE CLASS.
  *  we will building all tools on one class.
  *  for use all what we wanted anytimes.

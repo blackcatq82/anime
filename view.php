@@ -1,4 +1,13 @@
 <?php
+
+#
+#   THIS SCRIPT FOR ANIME 
+#   ^_^"
+#   * we needed to upgrade always.
+#
+# POWERD BY BLACKCAT 2021 - 2022
+
+
 # we needed to checking if guest use a title cartoon
 # then we will start else we need to location to index
 # we needed to includes same index do for keep everything as well.
