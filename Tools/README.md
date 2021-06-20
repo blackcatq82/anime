@@ -4,12 +4,22 @@
 
 ### كيف أضف اداة ###
 
- * من خلال interfaces example : class ClassNameTool implements Tools
- * الخطوه الثانية أضافة أسم الاداة example : public $title = "NameTool";
- * و أضافة المتغيرين المهمين :     public $instance; public $Methods;
+ * من خلال interfaces 
+  ```php
+ example class ClassNameTool implements Tools
+  ```
+ * الخطوه الثانية أضافة أسم الاداة 
+  ```php
+ example : public $title = "NameTool";
+  ```
+ * و أضافة المتغيرين المهمين :     
+  ```php
+ public $instance; 
+ public $Methods;
+  ```
  * $instance هو اوبجيت كلاس و $Methods هو قائمة الميثود الموجوده فيه
  * تحتاج تضيف ميثود BuilderMethods من اجل بناء قائمة الميثودات وهو كتالي
- ```php
+
 	public function BuilderMethods()
     {
         $this->instance = $this;
