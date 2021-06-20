@@ -105,6 +105,9 @@ class views implements Plugins
     {
         # Connection mysql.
         global $conn, $tools, $plugins, $dir_website ;
+        # check if there same value adding in cards before.
+        $ArrayIDs = array();
+
         # check if the login to username or not.
         if(!isset($_SESSION['username']))
         {
@@ -114,10 +117,7 @@ class views implements Plugins
         # get ipaddress client.
         $IpAddress = $tools->tool['BaseTools']['instance']->get_ip();
         # Set Query Find if we got same values.
-        $query = "SELECT AnimeID,Ipaddress,username, COUNT(AnimeID) AS CountWatch 
-        FROM animeviews 
-        WHERE Ipaddress = ? AND username = ?
-        HAVING COUNT(AnimeID <= 1)";
+        $query = "SELECT * FROM animeviews  WHERE Ipaddress = ? AND username = ?";
         #Stmt prepare
         $stmt = $conn->prepare($query);
         #set param
@@ -154,6 +154,15 @@ class views implements Plugins
         {
             # get id anime on row
             $IdAnime = $item['AnimeID'];
+
+            if(!$f = array_search('' . $IdAnime . '', $ArrayIDs))
+            {
+                $ArrayIDs = array('' . $IdAnime . '' => $IdAnime);
+            }else
+            {
+                continue;
+            }
+
             /* Bigger selected query
 
                 select distinct anime.name, animeviews.AnimeID 
