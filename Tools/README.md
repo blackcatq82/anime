@@ -9,7 +9,8 @@
  * و أضافة المتغيرين المهمين :     public $instance; public $Methods;
  * $instance هو اوبجيت كلاس و $Methods هو قائمة الميثود الموجوده فيه
  * تحتاج تضيف ميثود BuilderMethods من اجل بناء قائمة الميثودات وهو كتالي
- *     public function BuilderMethods()
+ ```php
+	public function BuilderMethods()
     {
         $this->instance = $this;
         $methods = get_class_methods($this);
@@ -17,11 +18,14 @@
         foreach($methods as $method){ $array += [$method => $method]; }
         return $array;
     }
-	
+```
 * و أيضاً ميثود بناء الاداة كinstance array.
-*     public function Base()
+
+```php
+    public function Base()
     {
         $this->Methods = $this->BuilderMethods();
         $array = array('instance' => $this->instance , 'Methods' =>  $this->Methods);
         return $array;
     }
+```
