@@ -5,10 +5,18 @@
 #   * we needed to upgrade always.
 #
 # POWERD BY BLACKCAT 2021 - 2022
+
+
+/* Includes Started */
 include_once("IncludeAll.php");
 include_once("Includes/start.php");
+
+
 # we will use plugin online views here.
+# هذا الامر من اجل تسجيل المشاهدين المتصلين الان في نفس الصفحة.
 $plugins->plugin['online_views']['instance']->set_online('home');
+
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="rtl">
@@ -31,6 +39,8 @@ $plugins->plugin['online_views']['instance']->set_online('home');
 <body>
 <!--- start main --->
 <main id="page">
+<?php /* include all cuts */ ?>
+<?php /* أستدعاء تقسيمات الملفات */ ?>
 <?php include_once("Includes/forms-faster.php") ?>
 <?php include_once("Includes/navbar.php") ?>
 <?php include_once("Includes/gallery.php") ?>
@@ -48,7 +58,7 @@ $plugins->plugin['online_views']['instance']->set_online('home');
             </div>
     </div>
     <div id="btns-search-ajax">
-                                            <!--- form search by high views--->
+        <!--- form search by high views--->
         <button onclick="high_view();" class="btn btn-danger my-sm-0" title="الإعلى مشاهدة"  name="high_views" value="true" type="submit">
                 <i id="high_view" class="fa fa-eye-slash" aria-hidden="true"></i>
         </button>
@@ -79,8 +89,17 @@ $plugins->plugin['online_views']['instance']->set_online('home');
         <nav id="navg" aria-label="Page navigation example" style="width: 100%;">
               <ul class="pagination justify-content-center">
               <?php 
+                  /* Use Plugin next pages. */
+                  # أضافة متغير عددي لحصولنا على عدد صفحات 
                   $page = 1;
-                  if(isset($_GET['page'])){$page = (int)$_GET['page'];}
+
+                  # التاكد من أنه لا يستخدم عدد من قبل.
+                  if(isset($_GET['page']))
+                  {
+                    # أضافة العدد بشكل رقمي لي منع الاختراق الانجكشين
+                    $page = (int)$_GET['page'];
+                  }
+                  # أستخدام بلجن البار الذي برمجنا من قبل.
                   $plugins->plugin['navpages']['instance']->navigation($page); 
                 ?>
               </ul>
@@ -89,8 +108,14 @@ $plugins->plugin['online_views']['instance']->set_online('home');
 </div>
 <!--- end pagination pages --->
 </main>
-<?php include_once("Includes/footer.php");
+<?php 
+
+
+/* Includes Ended */
+include_once("Includes/footer.php");
 include_once('Includes/end.php');
+
+
 ?>
 </body>
 </html>

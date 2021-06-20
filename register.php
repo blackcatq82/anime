@@ -7,40 +7,58 @@
 #
 # POWERD BY BLACKCAT 2021 - 2022
 
+
+
+/* Includes Started */
 include_once("IncludeAll.php");
 include_once("Includes/start.php");
 
+
+# التاكد من عدم تسجيل دخول والتسجيل بنفس الوقت.
 if(isset($_SESSION['username']) && isset($_POST['ajax']))
 {
     echo 'danger=\'انت مسجل بالفعل وانت في حسابك الان.;';
-    exit;
+    exit; // أستخدام الاقزت في ajax مطلوب
 }
+
+# التاكد عدم دخول المسجلين هذي الصفحة بشكل عام.
 else if(isset($_SESSION['username']))
 {
     header('location: ' . $dir_website . 'index.php');
-    exit;
+    exit;  // أستخدام الاقزت في ajax مطلوب
 }
+
+// التاكد من حصول على جميع البيانات المطلوب للتسجيل بالموقع
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['ajax']))
 {
+    // عمل متغير للاسم المستحدم
     $username = $_POST['username'];
+    // عمل متغير لكلمة المرور
     $password = $_POST['password'];
+    // عمل متغير للبريد
     $email = $_POST['email'];
+
+    //  التاكد من ان البيانات ليس فارغة قبل التسجيل.
     if(!empty($username) && !empty($password) && !empty($email))
     {
+        // أستخدام البلجن التسجيل
         $plugins->plugin['register']['instance']->registe($username,$email,$password);
     }
     else
     {
         echo 'danger=\'أدخل جميع البيانات المطلوبة.;';
-        exit;
+        exit;// أستخدام الاقزت في ajax مطلوب
     }
 }
 else
 {
+    // عن التفاعل الفورم
     if(isset($_POST['submit']))
     {
+        // التاكد من البيانات بشكل كامل
         if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['repassword']) && isset($_POST['email']))
         {
+            // التاكد من الموافقة على الشروط
             if(!isset($_POST['check']))
             {
                 $error = '<div class="alert alert-danger" role="alert">
@@ -49,6 +67,7 @@ else
             }
             else
             {
+                // التاكد من ان الشروط على وضع الموافقة
                 if($_POST['check'] !== 'true')
                 {
                     $error = '<div class="alert alert-danger" role="alert">
@@ -57,6 +76,7 @@ else
                 }
                 else
                 {
+                    // التاكد من ان البيانات ليست فارغة بشكل عام.
                     if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['repassword']) || empty($_POST['email']))
                     {
                         $error = '<div class="alert alert-danger" role="alert">
@@ -64,7 +84,8 @@ else
                     </div>';
                     }
                     else
-                    {
+                    {   
+                        // التاكد من ان كلمة المرور متطابقات.
                         if($_POST['password'] !== $_POST['repassword'])
                         {
                             $error = '<div class="alert alert-danger" role="alert">
@@ -73,9 +94,13 @@ else
                         }
                         else
                         {
+                            // عمل متغير الاسم المستخدم
                             $username = $_POST['username'];
+                            // عمل متغير كلمة المرور
                             $password = $_POST['password'];
+                            // عمل متغير البريد
                             $email = $_POST['email'];
+                            // استخدام بلجن التسجيل
                             $plugins->plugin['register']['instance']->registe($username,$email,$password, true);
                         }
                     }
@@ -99,11 +124,18 @@ else
 </head>
 <body>
 <main id="page">
+
+
+<?php /* include all cuts */ ?>
+<?php /* أستدعاء تقسيمات الملفات */ ?>
 <?php include_once("Includes/forms-faster.php") ?>
 <?php include_once("Includes/navbar.php") ?>
 <?php include_once("Includes/gallery.php") ?>
 <?php include_once("Includes/Masterweb-Message.php") ?>
 <?php include_once("Includes/MainSearch.php") ?>
+
+
+
 <div id="Title">
     <h4> سجل معنا </h4>
 </div>
@@ -127,7 +159,10 @@ else
     </div>
 </div>
 </main>
-<?php include_once("Includes/footer.php");
+<?php 
+
+/* Include Ended */
+include_once("Includes/footer.php");
 include_once('Includes/end.php');
 ?>
 </body>
