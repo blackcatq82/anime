@@ -184,3 +184,4 @@ class register implements Plugins
         }
     }
 }
+?>

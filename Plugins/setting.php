@@ -55,3 +55,5 @@ class websetting implements Plugins
         return $array;
     }
 }
+
+?>

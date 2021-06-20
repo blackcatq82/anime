@@ -413,3 +413,5 @@ class navpages implements Plugins
         }
     }
 }
+
+?>

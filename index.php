@@ -31,9 +31,6 @@ $plugins->plugin['online_views']['instance']->set_online('home');
     <link rel="stylesheet" href="<?php  echo $dir_website; ?>assets/css/styles.min.css">
 </head>
 <script>
-
-
-
 </script>
 
 <body>

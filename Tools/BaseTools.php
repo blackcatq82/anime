@@ -56,10 +56,10 @@ class BasicTools implements Tools
         global $conn; 
         
         $query = "SELECT * FROM animeviews WHERE AnimeID = ?";
-        $query = $conn->prepare($query);
-        $query->bind_param('s',$id);
-        $query->execute();
-        $result = $query->get_result();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('s',$id);
+        $stmt->execute();
+        $result = $stmt->get_result();
         $count = 0;
         while($view = mysqli_fetch_array($result))
         {
@@ -69,6 +69,58 @@ class BasicTools implements Tools
 
         return $count;
     }
+
+
+    /** we use it function for get id username */
+    public function GetUsernameID($UserName)
+    {   
+        global $conn; 
+        $query = "SELECT * FROM `users` WHERE username = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('s', $UserName);
+        $stmt->execute();
+        
+        # we needed to invoke method get_result 
+        # to return a result query if he found something or nullable.
+        $result = $stmt->get_result();
+        
+        # we needed to use fetch assoc for get row.
+        $row = $result->fetch_assoc();
+
+        if($result->num_rows <= 0)
+        {
+            return -1;
+        }
+
+        return $row['ID'];
+    }
+
+    /** we use it function for get id username */
+    public function GetAnimeID($Title)
+    {   
+        global $conn; 
+        
+        $query = "SELECT * FROM anime WHERE Title = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('s', $Title);
+        $stmt->execute();
+        
+        # we needed to invoke method get_result 
+        # to return a result query if he found something or nullable.
+        $result = $stmt->get_result();
+        
+        # we needed to use fetch assoc for get row.
+        $row = $result->fetch_assoc();
+
+        if($result->num_rows <= 0)
+        {
+            return -1;
+        }
+
+        return $row['ID'];
+    }
+
+
     /**
      * we use the function for Converter a 1000 to 1k or 1000000 to 1m.
      */

@@ -85,3 +85,5 @@ class Gallery implements Plugins
         }
     }
 }
+
+?>

@@ -54,3 +54,5 @@ class email implements Plugins
     }
 
 }
+
+?>

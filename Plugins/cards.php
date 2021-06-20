@@ -115,7 +115,28 @@ class Cards implements Plugins
                 <!--- card basic --->
                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                     <div class="flip-card">
-                        <h4 class="card-title-anime">' . $Name . '</h4>
+                    <h4 class="card-title-anime">' . $Name . '
+                    ';
+                    if(isset($_SESSION['username']))
+                    {
+                        $fv_status = $plugins->plugin['favorite']['instance']->GetTitleAnimes($_SESSION['username'], $row['ID']);
+                        echo '<a class="btn btn-mystyles my-2 my-sm-0" id="btn-profile" type="submit" onclick="SetAsfavorite(\'' . $Link . '\');"><span id="span-' . $Link . '" class="nowrap" style="font-size:8px;"><img id="' . $Link . '" src=
+                        ';
+                        if($fv_status)
+                        {
+                            echo '"themes/img/fv_yes.png"';
+                            echo '
+                            title="" alt="" class="icon ic_b_no_favorite"></span> </a>';
+                        }
+                        else
+                        {
+                            echo '"themes/img/fv_no.png"';
+                            echo '
+                            title="" alt="" class="icon ic_b_no_favorite">إضافة للمفضلة</span> </a>';
+                        }
+                    }
+
+                    echo '</h4>
                         <div class="flip-card-inner">                      
                             <!--- front --->
                             <div class="flip-card-front" style="
@@ -169,3 +190,5 @@ class Cards implements Plugins
         /* and we needed to building navgation bar pages */
     }
 }
+
+?>

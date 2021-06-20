@@ -20,7 +20,7 @@
 
       foreach($nav_rows as $navtop)
       {
-        if($navtop['side'] == 'TOP-SIDE')
+        if($navtop['side'] == 'TOP')
         {
             if(strpos($navtop['title'], '<i class') === false)
             {
@@ -48,8 +48,11 @@
         <button class="btn btn-mystyles my-2 my-sm-0" id="btn-login" type="submit" onclick="show(\'login\');"><i class="fa fa-sign-in" aria-hidden="true"></i> تسجيل دخول</button>';
       }else
       {
-        echo '<button class="btn btn-mystyles my-2 my-sm-0" id="btn-profile" type="submit" onclick="show(\'profile\');"><i class="fa fa-users" aria-hidden="true"></i>' . $_SESSION['username'] . '</button>';
-        echo '<a class="btn btn-mystyles my-2 my-sm-0" id="btn-logout" type="submit" href="' . $dir_website . 'logout.php"><i class="fa fa-users" aria-hidden="true"></i>تسجيل الخروج</a>';
+        echo '<button class="btn btn-mystyles my-2 my-sm-0" id="btn-profile" type="submit" onclick="show(\'profile\');"><i class="fa fa-users" aria-hidden="true"></i> ' . $_SESSION['username'] . '</button>';
+        echo '<a class="btn btn-mystyles my-2 my-sm-0" id="btn-logout" type="submit" href="' . $dir_website . 'favorite.html"><i class="fa fa-star" aria-hidden="true"  style="color:yellow;"></i> قائمة المفضلة</a>';
+        echo '<a class="btn btn-mystyles my-2 my-sm-0" id="btn-logout" type="submit" href="' . $dir_website . 'list-watch.html"><i class="fa fa-eye" aria-hidden="true" style="color:red;"></i> قائمة المشاهدات</a>';
+        echo '<a class="btn btn-mystyles my-2 my-sm-0" id="btn-logout" type="submit" href="' . $dir_website . 'profile.html"><i class="fa fa-wrench" aria-hidden="true" style="color:silver;"></i> ملف الاعدادات</a>';
+        echo '<a class="btn btn-mystyles my-2 my-sm-0" id="btn-logout" type="submit" href="' . $dir_website . 'logout.html"><i class="fa fa-sign-out" aria-hidden="true" style="color:black;"></i> تسجيل الخروج</a>';
       }
       ?>
     </div>

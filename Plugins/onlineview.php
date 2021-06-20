@@ -107,3 +107,4 @@ class online_views implements Plugins
         }
     }
 }
+?>

@@ -20,6 +20,61 @@ var class_btn_block = 'disabled';
 var isregister = false;
 var posts = null;
 var can_use_ajax = true;
+
+/* Use add fv method for add item as favorite on profile */
+function SetAsfavorite(Title)
+{
+    if(Title.length <= 0)
+    {
+        // keep return when string title == string.empty.
+       return;
+    }
+
+    /* we can use var to abort when we want use again. */
+    posts = $.ajax(
+        {
+            url:"favorite.html",
+            method:"post",
+            data:
+            {
+            Title:Title
+            ,
+            ajax:'true'
+            },
+            success:function(data)
+            {
+                if(data.includes('add'))
+                {
+                    SetAsfavoriteImage(Title, true);
+                }
+                else if(data.includes('remove'))
+                {
+                    SetAsfavoriteImage(Title, false);
+                }
+
+            },
+            error: function(data)
+            {
+            }
+            
+        });
+
+}
+
+function SetAsfavoriteImage(Title, Status)
+{
+    var span = document.getElementById("span-" + Title);
+    if(Status)
+    {
+        span.innerHTML = '<img id="' + Title + '" src="themes/img/fv_yes.png" title="" alt="' + Title + '" class="icon ic_b_no_favorite">';
+    }
+    else
+    {
+        span.Title = "Add fv";
+        span.innerHTML = '<img id="' + Title + '" src="themes/img/fv_no.png" title="" alt="المفضلة" class="icon ic_b_no_favorite"> إضافة للمفضلة';
+    }
+}
+
 /* we need function onclick */
 
 function register()
