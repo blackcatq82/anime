@@ -19,7 +19,7 @@
   ```
  * $instance هو اوبجيت كلاس و $Methods هو قائمة الميثود الموجوده فيه
  * تحتاج تضيف ميثود BuilderMethods من اجل بناء قائمة الميثودات وهو كتالي
-
+  ```php
 	public function BuilderMethods()
     {
         $this->instance = $this;
