@@ -1,0 +1,19 @@
+IndexIgnore *
+Header always set X-Content-Type-Options nosniff
+Header set X-Frame-Options SAMEORIGIN
+
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+RewriteRule .* - [F]
+RewriteBase /anime/
+# نستخدمة لي تحويل المسارات
+RewriteRule ^cartoon/(.*)-page-([0-9]+).html view.php?title=$1&page=$2 [NC,L]
+RewriteRule ^cartoon/(.*).html view.php?title=$1
+RewriteRule ^images/(.*).png images.php?title=$1
+RewriteRule ^view/(.*).html watch.php?title=$1
+
+RewriteCond %{THE_REQUEST} (.*)\.php  
+RewriteRule ^(.*)\.php $1.html [R=301,L]  
+
+RewriteCond %{THE_REQUEST} (.*)\.html  
+RewriteRule ^(.*)\.html $1.php [L]
