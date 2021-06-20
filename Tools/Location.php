@@ -5,6 +5,9 @@
 #   * we needed to upgrade always.
 #
 # POWERD BY BLACKCAT 2021 - 2022
+
+include_once("interface.php");
+
 class Location implements Tools
 {
     public $title = "Location";

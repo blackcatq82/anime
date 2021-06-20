@@ -6,6 +6,13 @@
 #   * I Hate Js.
 # POWERD BY BLACKCAT 2021 - 2022
 */
+
+// Set a same-site cookie for first-party contexts
+document.cookie = 'cookie1=value1; SameSite=Lax';
+// Set a cross-site cookie for third-party contexts
+document.cookie = 'cookie2=value2; SameSite=None; Secure';
+
+
 var class_danger = 'alert-danger';
 var class_success = 'alert-success';
 var class_btn_block = 'disabled';

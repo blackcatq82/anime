@@ -5,6 +5,10 @@
 #
 # POWERD BY BLACKCAT 2021 - 2022
 
-
-* we need to start building a view ep for cartoon 
-* we need to building all indexs without news.
+# TODO :
+# fix search main and ajax 
+# Create profile system
+# Create bitmap system 
+# Create seo system
+# Create chat online system with js or ruby or c# or python whatever.
+# Ads system maybe we put or remove it.

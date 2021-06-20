@@ -7,7 +7,7 @@
 #
 # POWERD BY BLACKCAT 2021 - 2022
 
-include_once("InterFaces.php");
+include_once("interface.php");
 class order implements Plugins
 {
     public $title = "order";

@@ -76,7 +76,13 @@ $plugins->plugin['online_views']['instance']->set_online('home');
 <div id="Context">
     <div class="body-blocker">
         <div class="row justify-content-center" id="animelist">
-<?php     $plugins->plugin['Cards']['instance']->GetCards(); ?>
+<?php     
+
+        // here we use plugin cards for show rows.
+        // هنا نظهر العناصر او المسلسلات عن طريق البلجن
+        $plugins->plugin['Cards']['instance']->GetCards(); 
+
+?>
         </div>
     </div>
 </div>

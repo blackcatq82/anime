@@ -7,7 +7,7 @@
 # POWERD BY BLACKCAT 2021 - 2022
 
 /// this for cards anime loop in index page.
-include_once("InterFaces.php");
+include_once("interface.php");
 class navpages implements Plugins
 {
     public $title = "navpages";

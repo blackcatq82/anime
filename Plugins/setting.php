@@ -8,7 +8,7 @@
 # POWERD BY BLACKCAT 2021 - 2022
 
 /// for take setting from mysqli and use on.
-include_once("InterFaces.php");
+include_once("interface.php");
 class websetting implements Plugins
 {
     public $title = "websetting";

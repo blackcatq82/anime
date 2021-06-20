@@ -7,7 +7,6 @@
 #
 # POWERD BY BLACKCAT 2021 - 2022
 
-include_once("InterFaces.php");
 class BasicTools implements Tools
 {
     public $title = "BaseTools";
