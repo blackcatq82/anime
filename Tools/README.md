@@ -5,20 +5,26 @@
 ### كيف أضف اداة ###
 
  * من خلال interfaces Exmaple
+ 
   ```php
  class ClassNameTool implements Tools
   ```
  * الخطوه الثانية أضافة أسم الاداة Exmaple
+ 
   ```php
  public $title = "NameTool";
   ```
  * و أضافة المتغيرين المهمين     
+ 
   ```php
  public $instance; 
  public $Methods;
   ```
+  
  * $instance هو اوبجيت كلاس و $Methods هو قائمة الميثود الموجوده فيه
+ 
  * تحتاج تضيف ميثود BuilderMethods من اجل بناء قائمة الميثودات وهو كتالي
+ 
   ```php
 	public function BuilderMethods()
     {
