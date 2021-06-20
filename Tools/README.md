@@ -4,15 +4,15 @@
 
 ### كيف أضف اداة ###
 
- * من خلال interfaces 
+ * من خلال interfaces Exmaple
   ```php
- example class ClassNameTool implements Tools
+ class ClassNameTool implements Tools
   ```
- * الخطوه الثانية أضافة أسم الاداة 
+ * الخطوه الثانية أضافة أسم الاداة Exmaple
   ```php
- example : public $title = "NameTool";
+ public $title = "NameTool";
   ```
- * و أضافة المتغيرين المهمين :     
+ * و أضافة المتغيرين المهمين     
   ```php
  public $instance; 
  public $Methods;
