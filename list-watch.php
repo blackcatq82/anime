@@ -88,7 +88,7 @@ $plugins->plugin['online_views']['instance']->set_online('home');
 <?php include_once("Includes/gallery.php") ?>
 <!--- start anime list --->
 <div id="Title">
-    <h4> قائمة المفضلة <img src="themes/img/fv_yes.png">!</h4>
+    <h4> قائمة المشاهدات <img src="themes/img/fv_yes.png">!</h4>
 </div>
 
 <div id="Context">
@@ -96,7 +96,7 @@ $plugins->plugin['online_views']['instance']->set_online('home');
         <div class="row justify-content-center" id="animelist">
 <?php     
     # we use method get cards fv.
-    $plugins->plugin['favorite']['instance']->GetCards(); 
+    $plugins->plugin['views']['instance']->GetCards(); 
 
 ?>
         </div>

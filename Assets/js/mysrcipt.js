@@ -43,11 +43,11 @@ function SetAsfavorite(Title)
             },
             success:function(data)
             {
-                if(data.includes('add'))
+                if(data.includes('58d1bbce297de3c304a9fefc3b483181872a5c6b'))
                 {
                     SetAsfavoriteImage(Title, true);
                 }
-                else if(data.includes('remove'))
+                else if(data.includes('db99845855b2ecbfecca9a095062b96c3e27703f'))
                 {
                     SetAsfavoriteImage(Title, false);
                 }
@@ -55,6 +55,7 @@ function SetAsfavorite(Title)
             },
             error: function(data)
             {
+                console.log(data);
             }
             
         });
@@ -74,6 +75,53 @@ function SetAsfavoriteImage(Title, Status)
         span.innerHTML = '<img id="' + Title + '" src="themes/img/fv_no.png" title="" alt="المفضلة" class="icon ic_b_no_favorite"> إضافة للمفضلة';
     }
 }
+
+// Use in fv page
+/* Use add fv method for add item as favorite on profile */
+function Removefv(Title)
+{
+    if(Title.length <= 0)
+    {
+        // keep return when string title == string.empty.
+       return;
+    }
+
+    /* we can use var to abort when we want use again. */
+    posts = $.ajax(
+        {
+            url:"favorite.html",
+            method:"post",
+            data:
+            {
+            Title:Title
+            ,
+            ajax:'true'
+            },
+            success:function(data)
+            {
+                if(data.includes('db99845855b2ecbfecca9a095062b96c3e27703f'))
+                {
+                    RemoveItemfv(Title);
+                }
+
+            },
+            error: function(data)
+            {
+            }
+            
+        });
+
+}
+
+function RemoveItemfv(Title)
+{
+    var card = document.getElementById("card-" + Title);
+    if(card != null)
+    {
+        card.innerHTML = '';
+    }
+}
+
 
 /* we need function onclick */
 

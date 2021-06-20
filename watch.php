@@ -96,10 +96,15 @@ if(isset($_GET['title']))
                             }
                         }
                     }
+
+
+                        # use system count view for insert a new row.
+                        $pluginView = $plugins->plugin['views']['instance'];
+                        $pluginView->SetView($_GET['title']);
                 }
                 else
                 {
-                    //header('location:' . $dir_website . 'index.php');
+                    header('location:' . $dir_website . 'index.php');
                 }
             }
             

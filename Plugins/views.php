@@ -5,11 +5,12 @@
 #   * we needed to upgrade always.
 #
 # POWERD BY BLACKCAT 2021 - 2022
-/// this for cards anime loop in index page.
+
+/// for take setting from mysqli and use on.
 include_once("interface.php");
-class favorite implements Plugins
+class views implements Plugins
 {
-    public $title = "favorite";
+    public $title = "views";
     public $instance;
     public $Methods;
 
@@ -19,7 +20,6 @@ class favorite implements Plugins
         $array = array('instance' => $this->instance , 'Methods' =>  $this->Methods);
         return $array;
     }
-
     public function BuilderMethods()
     {
         $this->instance = $this;
@@ -29,101 +29,76 @@ class favorite implements Plugins
         return $array;
     }
 
-
-    # we needed method for set a item in fv list
-    # first we should check if we got item before in list.
-    # مالي خلق اشرح.
-    function SetAsfavorite($Title)
+    function SetView($Title)
     {
-        # Connection mysql.
-        global $conn, $tools;
-
-        #remove char from title anime
-        $Title = $tools->tool['BaseTools']['instance']->RemoveEncodeHtml($Title);
-
-        # check if the login to username or not.
-        if(!isset($_SESSION['username']))
-        {
-            # stopped and return with nothing happend.
-            return;
-        }
-        # use tools for get id username.
-        $IDUser = $tools->tool['BaseTools']['instance']->GetUsernameID($_SESSION['username']);
-        # use tools for get id anime
-        $IDAnime = $tools->tool['BaseTools']['instance']->GetAnimeID($Title);
-        # Set Query Find if we got same values.
-        $query = "SELECT * FROM `favorite` WHERE IDUserName = ? AND IDAnime = ?";
-        #Stmt prepare
+        global $conn, $tools, $plugins;
+        
+        # we need to found anime by idanime in eps.
+        
+        # Set query insert row.
+        $query = "SELECT * FROM `movies` WHERE Title = ?";
+        # set on conn
         $stmt = $conn->prepare($query);
-        #set param
-        $stmt->bind_param('ss', $IDUser, $IDAnime);
-        #exeute query.
+        # set param values.
+        $stmt->bind_param('s', $Title);
+        #execute it query;
         $stmt->execute();
-        #get results
-        $result  = $stmt->get_result();
-
-        # check if there rows or not.
-        # information num_rows : https://www.php.net/manual/en/mysqli-result.num-rows.php
-        if($result->num_rows > 0)
+        # get result
+        $resuls = $stmt->get_result();
+        # if there row this mean we register before and can't be more then one in table.
+        if($resuls->num_rows <= 0)
         {
-            # this mean the guest wanna to remove from fv list.
-            # Set Query Find if we got same values.
-            $query = "DELETE FROM `favorite` WHERE IDUserName = ? AND IDAnime = ?";
-            #Stmt prepare
-            $stmt = $conn->prepare($query);
-            #set param
-            $stmt->bind_param('ss', $IDUser, $IDAnime);
-            #exeute query.
-            $stmt->execute();
-            #get results
-            $result  = $stmt->get_result();
-            # Ajax use it.
-            echo 'db99845855b2ecbfecca9a095062b96c3e27703f';
-            // keep return or we will add not remove.
+            print_r($resuls);
+            return;//don't conit
+        }
+
+        $result = $resuls->fetch_assoc();
+
+        $IDAnime = (int)$result['IdAnime'];
+
+        if($IDAnime == -1)
+        {
+            echo 'didn\'t found id anime';
             return;
         }
 
-        # Now adding a new item.
-        $query = "INSERT INTO `favorite`(`TitleAnime`, `IDAnime`, `IDUserName`) VALUES (? , ? , ? )";
-        #Stmt prepare
+        $View = 1;
+        $Title = (string)$Title; // just for more ex;
+        $IpAddress = $tools->tool['BaseTools']['instance']->get_ip();
+        $username = '';
+
+        if(isset($_SESSION['username']))
+        {
+            $username = (string)$_SESSION['username'];
+        }
+
+
+        # we needed to check if there row same values in database.
+        
+        # Set query insert row.
+        $query = "SELECT * FROM `animeviews` WHERE AnimeID = ? AND Title = ? AND Ipaddress = ?";
+        # set on conn
         $stmt = $conn->prepare($query);
-        #set param
-        $stmt->bind_param('sss',$Title, $IDAnime, $IDUser);
-        #exeute query.
+        # set param values.
+        $stmt->bind_param('sss', $IDAnime, $Title, $IpAddress);
+        #execute it query;
         $stmt->execute();
-        # Ajax use it.
-        echo '58d1bbce297de3c304a9fefc3b483181872a5c6b';
+        # get result
+        $resuls = $stmt->get_result();
+        # if there row this mean we register before and can't be more then one in table.
+        if($resuls->num_rows > 0)
+        {
+            return;//don't conit
+        }
+        # Set query insert row.
+        $query = "INSERT INTO `animeviews`(`AnimeID`, `View`, `Title`, `username`, `Ipaddress`) VALUES (?, ?, ?, ?, ?)";
+        # set on conn
+        $stmt = $conn->prepare($query);
+        # set param values.
+        $stmt->bind_param('sssss', $IDAnime, $View, $Title, $username, $IpAddress);
+        #execute it query;
+        $stmt->execute();
     }
-
-
-
-    function GetTitleAnimes($UserName, $IDAnime)
-    {
-        # Connection mysql.
-        global $conn, $tools;
-        # check if the login to username or not.
-        if(!isset($_SESSION['username']))
-        {
-            # stopped and return with nothing happend.
-            return;
-        }
-        # use tools for get id username.
-        $IDUser = $tools->tool['BaseTools']['instance']->GetUsernameID($_SESSION['username']);
-
-        # Set Query Find if we got same values.
-        $query = "SELECT * FROM `favorite` WHERE IDUserName = ? AND IDAnime = ?";
-        #Stmt prepare
-        $stmt = $conn->prepare($query);
-        #set param
-        $stmt->bind_param('ss', $IDUser, $IDAnime);
-        #exeute query.
-        $stmt->execute();
-        #get results
-        $result  = $stmt->get_result();
-        # return true if there row else return false;
-        return $result->num_rows > 0 ? true : false;
-    }
-
 
 
     function GetCards()
@@ -136,19 +111,21 @@ class favorite implements Plugins
             # stopped and return with nothing happend.
             return;
         }
-        # use tools for get id username.
-        $IDUser = $tools->tool['BaseTools']['instance']->GetUsernameID($_SESSION['username']);
+        # get ipaddress client.
+        $IpAddress = $tools->tool['BaseTools']['instance']->get_ip();
         # Set Query Find if we got same values.
-        $query = "SELECT * FROM `favorite` WHERE IDUserName = ?";
+        $query = "SELECT AnimeID,Ipaddress,username, COUNT(AnimeID) AS CountWatch 
+        FROM animeviews 
+        WHERE Ipaddress = ? AND username = ?
+        HAVING COUNT(AnimeID <= 1)";
         #Stmt prepare
         $stmt = $conn->prepare($query);
         #set param
-        $stmt->bind_param('s', $IDUser);
+        $stmt->bind_param('ss', $IpAddress, $_SESSION['username']);
         #exeute query.
         $stmt->execute();
         #get results
         $items  = $stmt->get_result();
-
         if($items->num_rows <= 0)
         {
             echo '<h3> لايوجد عناصر مسجلة من قبل! </h3>';
@@ -176,7 +153,16 @@ class favorite implements Plugins
         while($item = mysqli_fetch_array($items, MYSQLI_ASSOC))
         {
             # get id anime on row
-            $IdAnime = $item['IDAnime'];
+            $IdAnime = $item['AnimeID'];
+            /* Bigger selected query
+
+                select distinct anime.name, animeviews.AnimeID 
+                from table a, table b 
+                where a.name = b.name and a.id != b.id
+
+            */
+
+            
             # Set Query Find if we got same values.
             $query = "SELECT * FROM `anime` WHERE ID = ?";
             #Stmt prepare
@@ -206,14 +192,14 @@ class favorite implements Plugins
                 echo
                 '
                 <!--- card basic --->
-                <div id="card-' . $Link . '" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                     <div class="flip-card">
                     <h4 class="card-title-anime">' . $Name . '
                     ';
                     if(isset($_SESSION['username']))
                     {
                         $fv_status = $plugins->plugin['favorite']['instance']->GetTitleAnimes($_SESSION['username'], $row['ID']);
-                        echo '<a class="btn btn-mystyles my-2 my-sm-0" id="btn-profile" type="submit" onclick="Removefv(\'' . $Link . '\');"><span id="span-' . $Link . '" class="nowrap" style="font-size:8px;"><img id="' . $Link . '" src=
+                        echo '<a class="btn btn-mystyles my-2 my-sm-0" id="btn-profile" type="submit" onclick="SetAsfavorite(\'' . $Link . '\');"><span id="span-' . $Link . '" class="nowrap" style="font-size:8px;"><img id="' . $Link . '" src=
                         ';
                         if($fv_status)
                         {
@@ -292,5 +278,3 @@ class favorite implements Plugins
         }
     }
 }
-
-?>
