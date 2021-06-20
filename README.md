@@ -1,5 +1,4 @@
-=======
-# README #
+# معلومات عنه #
 
 هذي النسخه خاصة بالمبرمج بلاك كات ولا يصح استخدامه دون موافقة المبرمج ولا يصح ازالة الحقوق به
 
@@ -16,16 +15,31 @@
 
 ### تقسيم السكربت ###
 
-* Admincp هو مجلد خاص بالوحة التحكم السكربت <- DEL.
+* Admincp هو مجلد خاص بالوحة التحكم السكربت <- DEL. >> ممسوح بسبب مخي المصدي
 * Assets هو مجلد خاص بالتصميم وسكربتات الجافا سكربت
+>> يحتوي على bootstrap - jquery - js.
 * db هو مجلد خاص بالاتصال بالقاعدة
+>> Normal connection.
 * Includes هو مجلد خاص في ملفات الموقع المقسمة فولد وفوتر وغيرهم
+>> Cuts Footer Header Cards and more etc.
 * Plugins هو مجلد خاص بالبلجنات اي ملفات مساعدة للسكربت
+>> System injection a class automatic for more easy systems.
+>> [More About!](https://github.com/blackcatq82/anime/Plugins/)
 * template هو مجلد خاص بأشكال الرسالة البريدية
+>> Design Email for system smtp email.
 * Tools هو مجلد خاص بادوات البسيطة التي تساعد على بناء السريع
+>> Big uesfull tools.
+>> [More About!](https://github.com/blackcatq82/anime/Tools/)
 * IncludeAll.php هذا الملف هو مستدعي جميع الملفات السابقة ببساطة وسرعه
+>> include all tools and plugins from more speed coding.
+
+
+
+### صور عن السكربت ###
+* بعدين....
+![alt text](https://cdnuploads.aa.com.tr/uploads/Contents/2020/08/17/thumbs_b_c_d45c2ed921873eb8b9b70706095bd87e.jpg)
+![alt text](https://i.pinimg.com/originals/77/2e/b2/772eb2ca52588db2ced8cf9f98e9b51c.jpg)
+
 
 ### سيتم وضع الارشادات ###
-
-*
->>>>>>> 991dd8f (BASE)
+* تحت الانشاء او التفكير....
