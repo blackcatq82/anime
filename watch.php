@@ -3,7 +3,7 @@
 #   THIS SCRIPT FOR ANIME 
 #   ^_^"
 #   * we needed to upgrade always.
-#
+# this page we need research about function and all it code we created.
 # POWERD BY BLACKCAT 2021 - 2022
 
 include_once("IncludeAll.php");
