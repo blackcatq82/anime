@@ -1,5 +1,5 @@
 # TODO :
-
+* Create Online People status website one live.
 * fix search main and ajax 
 * Create profile system
 * Create bitmap system 

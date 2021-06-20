@@ -57,6 +57,13 @@ include_once("IncludeAll.php");
 include_once("Includes/start.php");
 
 
+# this page for register users.
+if(!isset($_SESSION['username']))
+{
+    $tools->tool['BaseTools']['instance']->GoTo();
+}
+
+
 # we will use plugin online views here.
 # هذا الامر من اجل تسجيل المشاهدين المتصلين الان في نفس الصفحة.
 $plugins->plugin['online_views']['instance']->set_online('home');

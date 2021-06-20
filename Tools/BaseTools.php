@@ -182,7 +182,7 @@ class BasicTools implements Tools
     public function GoTo()
     {
         global $dir_website;
-        header("Location: ' . $dir_website . 'index.php");
+        header("Location: " . $dir_website . "index.php");
         exit;
     }
     /**

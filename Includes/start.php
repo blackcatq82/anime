@@ -59,4 +59,7 @@ if($UsedToken)
         }
     }
 }
+
+$plugins->plugin['online']['instance']->SetOnline();
+
 ?>
