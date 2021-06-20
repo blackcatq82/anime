@@ -13,7 +13,8 @@
 
 ### كيف أقوم بالتثبيت؟ ###
 
-* سيتم برمجة ملف install.php
+* سيتم برمجة ملف install.php < DEL.
+* يوجد ملف SQL يحتوي على 953 كرتون و 32k حلقات و اكثر من 200الف رابط في مجلد Backup size 16.9 MB.
 
 ### تقسيم السكربت ###
 
@@ -21,17 +22,17 @@
 * Assets هو مجلد خاص بالتصميم وسكربتات الجافا سكربت
 > يحتوي على bootstrap - jquery - js.
 * db هو مجلد خاص بالاتصال بالقاعدة
->> Normal connection.
+> Normal connection.
 * Includes هو مجلد خاص في ملفات الموقع المقسمة فولد وفوتر وغيرهم
 > Cuts Footer Header Cards and more etc.
 * Plugins هو مجلد خاص بالبلجنات اي ملفات مساعدة للسكربت
 > System injection a class automatic for more easy systems.
-> [More About!](https://github.com/blackcatq82/anime/Plugins/)
+> [More About!](https://github.com/blackcatq82/anime/tree/origin/Plugins)
 * template هو مجلد خاص بأشكال الرسالة البريدية
 > Design Email for system smtp email.
 * Tools هو مجلد خاص بادوات البسيطة التي تساعد على بناء السريع
 > Big uesfull tools.
-> [More About!](https://github.com/blackcatq82/anime/Tools/)
+> [More About!](https://github.com/blackcatq82/anime/tree/origin/Tools)
 * IncludeAll.php هذا الملف هو مستدعي جميع الملفات السابقة ببساطة وسرعه
 > include all tools and plugins from more speed coding.
 
