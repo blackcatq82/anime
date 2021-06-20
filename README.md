@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# anime
-this script php test website animations / anime / cartoon / -> arabic.
 =======
 # README #
 
@@ -19,7 +16,7 @@ this script php test website animations / anime / cartoon / -> arabic.
 
 ### تقسيم السكربت ###
 
-* Admincp هو مجلد خاص بالوحة التحكم السكربت
+* Admincp هو مجلد خاص بالوحة التحكم السكربت <- DEL.
 * Assets هو مجلد خاص بالتصميم وسكربتات الجافا سكربت
 * db هو مجلد خاص بالاتصال بالقاعدة
 * Includes هو مجلد خاص في ملفات الموقع المقسمة فولد وفوتر وغيرهم
