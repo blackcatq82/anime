@@ -5,7 +5,7 @@
 هذي النسخه خاصة بالمبرمج بلاك كات ولا يصح استخدامه دون موافقة المبرمج ولا يصح ازالة الحقوق به
 
 ###  رابط الموقع بس اس تي سي مسوي بلوك لازم proxy Link website on ngrok ###
-* URL	https://18e421f23e42.ngrok.io
+* URL	https://18e421f23e42.ngrok.io/anime/index.html
 * Inspect	enabled
 * Proto	https
 ### ماهي مميزات السكربت؟ ###
