@@ -35,17 +35,36 @@ class online implements Plugins
     function SetOnline()
     {
         global $conn, $tools;
+        # Get IpAddress client
         $Ipaddress = $tools->tool['BaseTools']['instance']->get_ip();
+        # Set object information.
+        $information = array('country_code' => 'Unknow');
+        # Set Date setting
+        $date = date ('Y-m-d H:i:s', time());
+        # Set strtotime 
+        $date = strtotime($date);
+        # calcul 3600*24 = seconds 24hours.
+        $second24h = (int)(3600 * 24);
+        $date = date('Y-m-d H:i:s', strtotime($second24h .' sec', $date));
+        if(strlen($Ipaddress) > 4)
+        {
+            $information = $tools->tool['BaseTools']['instance']->ip_info($Ipaddress);
+        }
+
         if($this->CheckExists($Ipaddress))
         {
             #Update Date time to new one.
+            $query = "UPDATE `onlines` SET `Country`= ?,`Date`= ? WHERE `Ipaddress` = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param('sss', $information['country_code'], $date, $Ipaddress);
+            $stmt->execute();
         }
         else
         {
             #Set Query
-            $query = "SELECT * FROM `onlines` WHERE Ipaddress = ?";
+            $query = "INSERT INTO `onlines`(`Ipaddress`, `Country`, `Date`) VALUES ( ?, ?, ? )";
             $stmt = $conn->prepare($query);
-            $stmt->bind_param('s', $Ipaddress);
+            $stmt->bind_param('sss', $Ipaddress, $information['country_code'], $date);
             $stmt->execute();
         }
     }
@@ -66,8 +85,29 @@ class online implements Plugins
     }
 
 
-    function ClearOfflines()
+    function InitClear()
     {
+        global $conn;
+        #Set Query
+        $query = "DELETE FROM `onlines` WHERE Date < ? ";
+        $stmt = $conn->prepare($query);
+        $new = date ('Y-m-d H:i:s', time());
+        $stmt->bind_param('s', $new);
+        $stmt->execute();
 
+    }
+
+
+    function GetOnlines()
+    {
+        global $conn;
+        #Set Query
+        $query = "SELECT * FROM `onlines`";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('s', $Ipaddress);
+        $stmt->execute();
+
+        #TODO : Desgin online on 24h class
+        # set rows in them.
     }
 }
