@@ -117,7 +117,7 @@ class views implements Plugins
         # get ipaddress client.
         $IpAddress = $tools->tool['BaseTools']['instance']->get_ip();
         # Set Query Find if we got same values.
-        $query = "SELECT * FROM animeviews  WHERE Ipaddress = ? AND username = ?";
+        $query = "SELECT * FROM animeviews  WHERE Ipaddress = ? OR username = ?";
         #Stmt prepare
         $stmt = $conn->prepare($query);
         #set param
