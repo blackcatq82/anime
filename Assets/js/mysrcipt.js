@@ -33,7 +33,7 @@ function SetAsfavorite(Title)
     /* we can use var to abort when we want use again. */
     posts = $.ajax(
         {
-            url:"favorite.html",
+            url:"/anime/favorite.html",
             method:"post",
             data:
             {
@@ -89,7 +89,7 @@ function Removefv(Title)
     /* we can use var to abort when we want use again. */
     posts = $.ajax(
         {
-            url:"favorite.html",
+            url:"/anime/favorite.html",
             method:"post",
             data:
             {
@@ -268,7 +268,7 @@ function post(username,password,email,message_info)
     /* we can use var to abort when we want use again. */
     posts = $.ajax(
         {
-            url:"register.html",
+            url:"/anime/register.html",
             method:"post",
             data:
             {
@@ -413,7 +413,7 @@ function login_post(username,password,message_info)
     /* we can use var to abort when we want use again. */
     posts = $.ajax(
         {
-            url:"login.html",
+            url:"/anime/login.html",
             method:"post",
             data:
             {
@@ -449,7 +449,12 @@ function login_post(username,password,message_info)
                         message_info.classList.add(class_show);
                     }
                     var message = data.substring(data.lastIndexOf("'") + 1, data.lastIndexOf(";"));
-                    message_info.innerHTML  = message;
+                    console.log(message.length > 100);
+                    if(message.length > 100)
+                    {
+                        message_info.innerHTML  =   "حدث خطاء ما حول تكرار المحاولة" ; 
+                    }
+                    message_info.innerHTML  =   message; 
                 }
                 else if(data.includes('success'))
                 {
@@ -470,6 +475,11 @@ function login_post(username,password,message_info)
                         message_info.classList.add(class_show);
                     }
                     var message = data.substring(data.lastIndexOf("'") + 1, data.lastIndexOf(";"));
+
+                    if(message.length > 100)
+                    {
+                        message_info.innerHTML  =   "حدث خطاء ما حول تكرار المحاولة" ; 
+                    }
                     message_info.innerHTML  =   message ; 
                 }
             },
@@ -576,7 +586,7 @@ function order_anime(name,email,message_info)
     /* we can use var to abort when we want use again. */
     posts = $.ajax(
         {
-            url:"order.html",
+            url:"/anime/order.html",
             method:"post",
             data:
             {

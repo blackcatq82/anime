@@ -35,11 +35,11 @@
     <div id="register-message-info" class="alert alert-danger hide-class" role="alert">
       
     </div>
-    <form class="form" autocomplete="off">
+    <form class="form">
       <input class="form-control mr-sm-2" id="register-username" type="username" placeholder="الاسم المستخدم" aria-label="الاسم المستخدم">
-      <input class="form-control mr-sm-2" id="register-email" type="email" placeholder="البريد الإلكتروني" aria-label="البريد الإلكتروني">
-      <input class="form-control mr-sm-2" id="register-password" type="password" placeholder="كلمة المرور" aria-label="كلمة المرور">
-      <input class="form-control mr-sm-2" id="register-repassword" type="password" placeholder="تأكيد كلمة المرور" aria-label="تأكيد كلمة المرور">
+      <input class="form-control mr-sm-2" id="register-email" type="email" placeholder="البريد الإلكتروني" aria-label="البريد الإلكتروني" autocomplete="current-email">
+      <input class="form-control mr-sm-2" id="register-password" type="password" placeholder="كلمة المرور" aria-label="كلمة المرور" autocomplete="current-password">
+      <input class="form-control mr-sm-2" id="register-repassword" type="password" placeholder="تأكيد كلمة المرور" aria-label="تأكيد كلمة المرور" autocomplete="current-password">
       <label class="form-check-label" for="gridCheck" style="margin: auto;margin-top: 40px;background: aliceblue;float: right;">
           الموافقة على <a href="<?php  echo $dir_website; ?>terms-and-conditions.html"> الشروط والأحكام </a>
       </label>
@@ -66,9 +66,9 @@
     <div id="login-message-info" class="alert alert-danger hide-class" role="alert">
       
     </div>
-    <form class="form" autocomplete="off">
-      <input class="form-control mr-sm-2" id="login-username" type="username" placeholder="الاسم المستخدم او البريد الإلكتروني" aria-label="username">
-      <input class="form-control mr-sm-2" id="login-password" type="password" placeholder="كلمة المرور" aria-label="password">
+    <form class="form">
+      <input class="form-control mr-sm-2" id="login-username" type="username" placeholder="الاسم المستخدم او البريد الإلكتروني" aria-label="username" autocomplete="login-username">
+      <input class="form-control mr-sm-2" id="login-password" type="password" placeholder="كلمة المرور" aria-label="password" autocomplete="login-password">
         <label class="form-check-label" for="gridCheck" style="
     /* margin: auto; */
     margin-top: 9px;
