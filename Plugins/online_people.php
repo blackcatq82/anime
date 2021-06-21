@@ -60,11 +60,16 @@ class online implements Plugins
             $stmt->execute();
         }
         else
-        {
+        {   
+            $username = '';
             #Set Query
-            $query = "INSERT INTO `onlines`(`Ipaddress`, `Country`, `Date`) VALUES ( ?, ?, ? )";
+            if(isset($_SESSION['username']))
+            {
+                $username  = $_SESSION['username'];
+            }
+            $query = "INSERT INTO `onlines`(`Ipaddress`, `Country`, `Date`, `username`) VALUES ( ?, ?, ?, ?)";
             $stmt = $conn->prepare($query);
-            $stmt->bind_param('sss', $Ipaddress, $information['country_code'], $date);
+            $stmt->bind_param('ssss', $Ipaddress, $information['country_code'], $date, $username);
             $stmt->execute();
         }
     }
@@ -97,6 +102,17 @@ class online implements Plugins
 
     }
 
+    function Count()
+    {
+        global $conn;
+        #Set Query
+        $query = "SELECT * FROM `onlines`";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return (int)$result->num_rows;
+    }
 
     function GetOnlines()
     {
@@ -104,10 +120,25 @@ class online implements Plugins
         #Set Query
         $query = "SELECT * FROM `onlines`";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('s', $Ipaddress);
         $stmt->execute();
-
+        $result = $stmt->get_result();
         #TODO : Desgin online on 24h class
         # set rows in them.
+        while($rows = $result->fetch_assoc())
+        {
+            $code = strtolower($rows['Country']);
+
+            if($code == 'unknow'){
+                $code = 'kw';                
+            }
+
+            if($rows['username'] != '')
+            {
+                echo '<li class="Flagli">' . $rows['username'] .' من <img class="flag" src="https://lipis.github.io/flag-icon-css/flags/4x3/' . $code . '.svg" style="height:30px;weight:30px;" alt=""></li>';
+                continue;
+            }
+            
+            echo '<li class="Flagli">ضيف من <img class="flag" src="https://lipis.github.io/flag-icon-css/flags/4x3/' . $code . '.svg" style="height:30px;weight:30px;" alt=""></li>';
+        }
     }
 }

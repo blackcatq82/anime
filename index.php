@@ -29,6 +29,7 @@ $plugins->plugin['online_views']['instance']->set_online('home');
     <link rel="stylesheet" href="<?php  echo $dir_website; ?>assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="<?php  echo $dir_website; ?>assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="<?php  echo $dir_website; ?>assets/css/styles.min.css">
+    <link href="<?php  echo $dir_website; ?>assets/css/flag-icon.css" rel="stylesheet">
 </head>
 <script>
 </script>
@@ -110,6 +111,26 @@ $plugins->plugin['online_views']['instance']->set_online('home');
     </div>
 </div>
 <!--- end pagination pages --->
+
+<!-- online 24h -->
+<div id="Title">
+    <h4>المتصلين اليوم (<?php echo $plugins->plugin['online']['instance']->Count(); ?>)</h4>
+</div>
+<div id="Context" class="container">
+<div class="row col-12">
+        <nav id="navg" aria-label="Page navigation example" style="width: 100%;">
+              <ul class="pagination justify-content-center">
+              <div class="row" style="padding:10px;">
+              <?php 
+                #use plugin onlines for get results 24h.
+                $plugins->plugin['online']['instance']->GetOnlines();
+              ?>
+              </div>
+              </ul>
+        </nav>
+    </div>
+</div>
+<!--- End -->
 </main>
 <?php 
 
