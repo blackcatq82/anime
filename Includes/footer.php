@@ -94,4 +94,5 @@
     <script src="<?php  echo $dir_website; ?>assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php  echo $dir_website; ?>assets/js/script.min.js"></script>
     <script src="<?php  echo $dir_website; ?>assets/js/mysrcipt.js"></script>
+	<script src="<?php  echo $dir_website; ?>assets/js/SearchMp4.js"></script>
 <!--- end footer --->

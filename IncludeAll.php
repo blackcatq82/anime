@@ -13,6 +13,9 @@
 error_reporting(E_ALL);
 // this set display. ini_set("display_errors", 1);
 
+// set the default timezone to use.
+date_default_timezone_set('UTC');
+
 function GetSiteUrl()
 {                   
     // this oper if website use protocol ssl set https else set http
@@ -28,6 +31,11 @@ $dir_website = $web_site . "anime/";
 // use var title website more easy for change name website.
 $title_website = "كرتون مدبلج بالعربي";
 
+
+
+// Date Build the website use for sitemap main pages.
+$dayBuilder = "2021-6-20";
+$tomorrow  = date('Y-m-d', strtotime("" . date("Y-m-d") . "-24 HOUR"));
 
 // autoload this method for load undefined class
 // more information : https://www.php.net/manual/en/function.autoload.php

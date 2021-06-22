@@ -910,7 +910,7 @@ $(document).ajaxComplete(function()
     can_use_ajax = true;    
 });
 
-function resrc_iframe($url)
+function Play_Iframe($url)
 {
     var iframe = document.getElementById('iframe_videos');
     iframe.src = $url;

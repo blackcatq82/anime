@@ -295,5 +295,51 @@ class BasicTools implements Tools
                 }
             return $output;
     }
+
+
+
+    # Get Item anime by ID.
+    function GetAnimeByID($Id)
+    {
+        global $conn;
+        $sql = "SELECT * FROM `anime` WHERE ID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt-bind_param('s', $Id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if($result->num_rows > 0)
+        {
+            $item = $result->fetch_assoc();
+            return $item;
+        }
+
+        # return nullable when result didn't has anyrows.
+        return null;
+    }
+
+
+        # Get Item movies by ID Anime.
+        function GetMovieByIdAnime($Id)
+        {
+            global $conn;
+            $sql = "SELECT * FROM `movies` WHERE IdAnime = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('s', $Id);
+            $stmt->execute();
+    
+            $result = $stmt->get_result();
+    
+            if($result->num_rows > 0)
+            {
+                # we needed it for while.
+                $array = $result->fetch_all();
+                return $array;
+            }
+    
+            # return nullable when result didn't has anyrows.
+            return null;
+        }
 }
 ?>

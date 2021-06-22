@@ -255,11 +255,21 @@ function resrc_iframe($url)
                                         $first = false;
                                         $defulat_link = $video['Link'];
                                     }
+
+                                    # Missed a value link for handless.
+                                    # information contains : https://www.php.net/manual/en/function.str-contains.php
+                                    if(str_contains($video['Link'], 'arteenz'))
+                                    {
+                                        // skipped danger links.
+                                        # we should remove item from database.
+                                        continue;
+                                    }
+
                                     $random = rand(0,7);
                                     $btn = (string)implode($random_btn[$random]);
                                     echo '<button type="submit" class="btn btn-xl btn-' . (string)$btn . '" style="font-size:9px padding:10px;"
                                     value="' . $video['Link'] . '"
-                                    onclick="resrc_iframe(\'' . $video['Link'] . '\');"
+                                    onclick="Play_Iframe(\'' . $video['Link'] . '\');"
                                     > Server-' . $count. ' </button>';
                                     $count++;
                                 }
@@ -267,13 +277,19 @@ function resrc_iframe($url)
                             ?>
                         </div>
                     <div class="col-2"></div>
-                      <div class="col-8 embed-responsive embed-responsive-16by9  test-iframe-base">
+                      <div class="col-8 embed-responsive embed-responsive-16by9  test-iframe-base" id="baseVideo">
                           <iframe
                                              class="embed-responsive-item" 
                                              id = "iframe_videos"
                                              src="<?php echo $defulat_link; ?>" 
                                              frameborder="0" allowfullscreen="true">
                           </iframe>
+                          <!-- 
+                            When we download all anime we can use it best video base.
+                          <video class="embed-responsive-item"  id ="iframe_videos" height="100%" weight="100%" controls>
+                            <source src="/anime/video/0.mp4">
+                          </video>
+                          -->
                       </div>
                     <div class="col-2"></div>
                      <div class="col-4 col-sm-4 col-md-2 co-lg-2 col-xl-2">
