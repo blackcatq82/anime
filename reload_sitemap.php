@@ -218,7 +218,11 @@ $count_anime = 0;
                 echo ("add anime id:[" . $count_anime ."]. \r\n"); 
                 $count_anime++;
                 // reset a story with ...readmore..
-                $Story = $tools->tool['BaseTools']['instance']->SmallContext($item['Story']);
+                // lower chars in string.
+                //$Story = $tools->tool['BaseTools']['instance']->SmallContext($item['Story']);
+
+                // larger chars unlimited.
+                $Story = $item['Story'];
 
                 // remove chars smy from title // use method RemoveEncodeHtml
                 $Name = $tools->tool['BaseTools']['instance']->RemoveEncodeHtml($item['Title']);
