@@ -256,13 +256,35 @@ function resrc_iframe($url)
                                         $defulat_link = $video['Link'];
                                     }
 
-                                    # Missed a value link for handless.
+                                    # Missed a value link for handl
                                     # information contains : https://www.php.net/manual/en/function.str-contains.php
-                                    if(str_contains($video['Link'], 'arteenz'))
+                                    if(isset($video['Link']) && $video != null && $video['Link'] != null 
+                                                             && strlen($video['Link']) > 12)
                                     {
-                                        // skipped danger links.
-                                        # we should remove item from database.
-                                        continue;
+
+                                        if (!function_exists('str_contains')) 
+                                        {
+                                            function str_contains(string $haystack, string $needle): bool
+                                            {
+                                                return '' === $needle || false !== strpos($haystack, $needle);
+                                            }
+
+                                            if(str_contains($video['Link'], 'arteenz'))
+                                            {
+                                                // skipped danger links.
+                                                # we should remove item from database.
+                                                continue;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if(str_contains($video['Link'], 'arteenz'))
+                                            {
+                                                // skipped danger links.
+                                                # we should remove item from database.
+                                                continue;
+                                            }
+                                        }
                                     }
 
                                     $random = rand(0,7);
