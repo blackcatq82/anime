@@ -22,7 +22,10 @@ class BUILDERTOOLS
 
     ///instance classes.
     public $tool = array();
- 
+    
+    //Tools Base
+    public $base;
+
     public function Running()
     {
         //Load in the plugin reflection classes
@@ -30,6 +33,8 @@ class BUILDERTOOLS
         //Build the final menu
         $this->buildMenu();
         
+        //set a base tools
+        $this->base = $this->tool['BaseTools']['instance'];
     }
 
     /**

@@ -296,6 +296,13 @@ class BasicTools implements Tools
             return $output;
     }
 
+    function gotoMain()
+    {
+        global $dir_website;
+        # Just return to main page.
+        # keep a simple code.
+        header('location:' . $dir_website . 'index.php');
+    }
 
 
     # Get Item anime by ID.
