@@ -5,10 +5,19 @@ include_once('Includes/start.php');
 # tag xml we use encoding utf-8 <-- has arabic chars
 # and we can use windows-1256 for arabic language.
 $input = '<?xml version="1.0" encoding="UTF-8" ?>';
+
+
+
+# Debug when add a new line in string 
+# i dont understand why and how to fix it sample thing....
+# just wanna to say no women no cry.
+#$input .= '\r\n';
+
+
 # XML tag definitions
 # Information about it : https://www.sitemaps.org/protocol.html
 # XML tag definitions : https://www.sitemaps.org/protocol.html#xmlTagDefinitions
-
+echo ("started to create a site map."); 
 
 # <urlset>	required Encapsulates the file and references the current protocol standard. <~ عنصر عام.
 
@@ -136,8 +145,13 @@ $input = '<?xml version="1.0" encoding="UTF-8" ?>';
 # <video:category> : A short description of the broad category that the video belongs to
 
 # Create a input string for keep data on srtring before build a new sitemap.xml
-$input .= '\r\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">';
-    $IndexOffsets = array(0 => 'index.html', 1 => 'index.php', 2 => '');
+$input .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">';
+$IndexOffsets = array(0 => 'index.html', 1 => 'index.php', 2 => '');
+$count_pageMain = 0;
+$count_cateGory = 0;
+$count_anime = 0;
+
+    echo ("create main page site base. \r\n"); 
         foreach($IndexOffsets as $key => $Offset)
         {
             $input .= '
@@ -152,8 +166,11 @@ $input .= '\r\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns
                 <changefreq>daily</changefreq>
                 <priority>1.00</priority>
             </url>';
-        }
 
+            echo ("Add ~> [". $key ."]:" . $dir_website . $Offset . ". \r\n");  
+            $count_pageMain++;
+        }
+        echo ("finish to adding items length:" . $count_pageMain . "\r\n"); 
         global $conn;
         
         # Add category website links.
@@ -162,6 +179,7 @@ $input .= '\r\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns
         $stmt->execute();
         $result = $stmt->get_result();
 
+        echo ("started to adding category items. \r\n"); 
         #check if there items
         if($result->num_rows > 0)
         {
@@ -175,7 +193,11 @@ $input .= '\r\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns
                     <changefreq>weekly</changefreq>
                     <priority>0.50</priority>
                 </url>';
+
+                echo ("Add ~> Title:[" . $cate['title'] ."] [Link]:" . $dir_website . $cate['href'] . ". \r\n"); 
+                $count_cateGory++;
             }
+            echo ("finish to adding items length:" . $count_cateGory . "\r\n"); 
         }
 
 
@@ -188,12 +210,13 @@ $input .= '\r\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns
 
         # get items
         $results = $stmt->get_result();
-
         if($results->num_rows > 0)
         {
+            echo ("started to adding anime items. \r\n"); 
             while($item = $results->fetch_assoc())
             {
-
+                echo ("add anime id:[" . $count_anime ."]. \r\n"); 
+                $count_anime++;
                 // reset a story with ...readmore..
                 $Story = $tools->tool['BaseTools']['instance']->SmallContext($item['Story']);
 
@@ -240,6 +263,23 @@ $input .= '\r\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns
         }
        $input .= '\r\n</urlset>';
 
-       # Create a file sitemap.xml and set all data on him.
+       # we needed to del file before create a new one.
+       $file_pointer = "sitemap.xml";
+       if (file_exists($file_pointer))
+       {
+            if (!unlink($file_pointer)) 
+            { 
+                echo ("$file_pointer cannot be deleted due to an error"); 
+            } 
+            else 
+            { 
+                # Create a file sitemap.xml and set all data on him.
+                file_put_contents("sitemap.xml", $input);
+                echo ("$file_pointer has been update."); 
+            }
+            exit;
+       }
+
        file_put_contents("sitemap.xml", $input);
+       echo ("$file_pointer has been update."); 
 ?>
