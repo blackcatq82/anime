@@ -99,7 +99,7 @@ if(isset($_GET['title']))
         # we needed to fetch results.
         $result = $num->fetch_assoc();
         # set id item on varr.
-        $ItemId =  $result['ID'];
+        $ItemId =  $result['NumberAnime'];
 
         # check if we found items by id item.
         if($num->num_rows > 0)
@@ -118,7 +118,7 @@ if(isset($_GET['title']))
                     $query = "SELECT * FROM `movies` WHERE NumberAnime = ? limit 0 , ?";
                     $stmt = $conn->prepare($query);
                     # we here set a bind param id item and limited rows in one page.
-                    $stmt->bind_param('ss', $Id,    $limited);
+                    $stmt->bind_param('ss', $ItemId,    $limited);
                     # execute the query.
                     $stmt->execute();
                     # get results and set on while items.
@@ -164,7 +164,19 @@ if(isset($_GET['title']))
                     $stmt->bind_param('sss', $Id,   $num_rows,  $limited);
                     $stmt->execute();
                     $results = $stmt->get_result();
+
                 }
+            }
+            # check if items count bigger then 0 mean we found items low then 10.
+            elseif($countItems > 0)
+            {
+                    # now we will selected all rows by page value to found 10 rows.
+                    $query = "SELECT * FROM `movies` WHERE NumberAnime = ? limit ? , ?";
+                    $stmt = $conn->prepare($query);
+                    # we here set bind the id item and num of rows 10 by 1 page, and limited rows in page = 10.
+                    $stmt->bind_param('sss', $Id,   $num_rows,  $limited);
+                    $stmt->execute();
+                    $results = $stmt->get_result();
             }
         }
         else
