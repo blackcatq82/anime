@@ -505,7 +505,8 @@ function resrc_iframe($url)
         </div>
     </div>
 </main>
-<?php include_once("Includes/footer.php");
+<?php 
+include_once("Includes/footer.php");
 include_once('Includes/end.php');
 ?>
 </body>

@@ -126,7 +126,7 @@ if(isset($_POST['send-report']))
                         // set on prepare method.
                         $stmt  = $conn->prepare($query);
                         // set bind param values.
-                        $stmt->bind_param('sssss',$title, $massage, $date, $ip, $path);
+                        $stmt->bind_param('sssss',  $title,     $massage,   $date,  $ip,    $path);
 
                         // execute the query
                         if($stmt->execute())

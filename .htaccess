@@ -7,7 +7,7 @@ RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
 RewriteRule .* - [F]
 RewriteBase /anime/
 # نستخدمة لي تحويل المسارات
-RewriteRule ^cartoon/(.*)-page-([0-9]+).html view.php?title=$1&page=$2 [NC,L]
+RewriteRule ^cartoon/(.*)-الصفحة-([0-9]+).html view.php?title=$1&page=$2 [NC,L]
 RewriteRule ^cartoon/(.*).html view.php?title=$1
 RewriteRule ^images/(.*).png images.php?title=$1
 RewriteRule ^view/(.*).html watch.php?title=$1

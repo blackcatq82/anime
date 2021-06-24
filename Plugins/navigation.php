@@ -286,13 +286,13 @@ class navpages implements Plugins
                                     if($firstx && $uses > 0)
                                     {
                                         $firstx = false;
-                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $uses . '.html" tabindex="-1" aria-disabled="true">السابق</a> </li>';
-                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';                                     }
+                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $uses . '.html" tabindex="-1" aria-disabled="true">السابق</a> </li>';
+                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';                                     }
                                     else
                                     {
                                         if($uses > 0)
                                         {
-                                            echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';
+                                            echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';
                                         }
                                     }
                                     $uses++;
@@ -313,13 +313,13 @@ class navpages implements Plugins
                                     if($firstx && $uses > 0)
                                     {
                                         $firstx = false;
-                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $uses . '.html" tabindex="-1" aria-disabled="true">السابق</a> </li>';
-                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';                                     }
+                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $uses . '.html" tabindex="-1" aria-disabled="true">السابق</a> </li>';
+                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';                                     }
                                     else
                                     {
                                         if($uses > 0)
                                         {
-                                            echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';  
+                                            echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';  
                                         }
                                     }
                                     $uses++;
@@ -340,14 +340,14 @@ class navpages implements Plugins
                                     if($firstx && $uses > 0)
                                     {
                                         $firstx = false;
-                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $uses . '.html" tabindex="-1" aria-disabled="true">السابق</a> </li>';
-                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';  
+                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $uses . '.html" tabindex="-1" aria-disabled="true">السابق</a> </li>';
+                                        echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';  
                                     }
                                     else
                                     {
                                         if($uses > 0)
                                         {
-                                            echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';  
+                                            echo '<li class="page-item"><a class="page-link"  href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $uses . '.html" tabindex="-1" aria-disabled="true">' . $uses . '</a> </li>';  
                                         }
                                     }
                                     $uses++;
@@ -366,13 +366,13 @@ class navpages implements Plugins
                             if(($this->page_number + 1) <= $this->page_max)
                             {
                                 $uses =($this->page_number + 1);
-                                echo '<li class="page-item"><a class="page-link" href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $uses . '.html">التالي</a></li>';
+                                echo '<li class="page-item"><a class="page-link" href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $uses . '.html">التالي</a></li>';
                             }
                             
                         }
                         else
                         {
-                            echo '<li class="page-item"><a class="page-link" href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-page-' . $page . '.html"> ' . $page . '</a></li>';
+                            echo '<li class="page-item"><a class="page-link" href="' . $dir_website . 'cartoon/' . $_GET['title'] . '-الصفحة-' . $page . '.html"> ' . $page . '</a></li>';
                         }
                         $page++;
                         $count++;
